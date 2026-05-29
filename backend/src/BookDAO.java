@@ -34,10 +34,9 @@ public class BookDAO {
 
     }
 
-    public List<Book> getAllBooks(){
-    
-    List<Book> books = new ArrayList<>();
-    
+    public List<Book> getAllBooks() {
+
+        List<Book> books = new ArrayList<>();
 
         try {
             String sql = "SELECT * FROM BOOKS";
@@ -61,6 +60,49 @@ public class BookDAO {
         }
         return books;
 
+    }
+
+    public boolean updatebooks(Book b) {
+        try {
+            String sql = "UPDATE BOOKS SET TITLE = ?, AUTHOR = ?, QUANTITY = ? WHERE ID =?";
+            PreparedStatement ps = this.c.prepareStatement(sql);
+
+            ps.setString(1, b.getTitle());
+            ps.setString(2, b.getAuthor());
+            ps.setInt(3, b.getQuantity());
+            ps.setInt(4, b.getId());
+
+            int rows = ps.executeUpdate();
+
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean delete(int id){
+
+        try{
+            String sql = "DELETE FROM BOOKS WHERE ID = ?";
+            PreparedStatement ps = this.c.prepareStatement(sql);
+
+            ps.setInt(1, id);
+            ps.executeUpdate();
+
+            return true;
+
+
+
+
+
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+
+        }
+        
     }
 
 }
