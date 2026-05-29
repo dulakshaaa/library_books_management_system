@@ -82,9 +82,9 @@ public class BookDAO {
         }
     }
 
-    public boolean delete(int id){
+    public boolean delete(int id) {
 
-        try{
+        try {
             String sql = "DELETE FROM BOOKS WHERE ID = ?";
             PreparedStatement ps = this.c.prepareStatement(sql);
 
@@ -93,16 +93,46 @@ public class BookDAO {
 
             return true;
 
-
-
-
-
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
 
         }
+
+    }
+
+    public Book getbyid(int id) {
         
+        try {
+            Book b = new Book();
+            String sql = "SELECT * FROM BOOKS WHERE ID = ?";
+            PreparedStatement ps = this.c.prepareStatement(sql);
+
+            ps.setInt(1, id);
+            ResultSet s = ps.executeQuery();
+
+            
+
+                if (s.next()) {
+                    b.setId(s.getInt("id"));
+                    b.setTitle(s.getString("title"));
+                    b.setAuthor(s.getString("author"));
+                    b.setQuantity(s.getInt("quantity"));
+
+                    
+
+                }
+                return b;
+
+            
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Error fetching book by id");
+
+        }
+        
+
     }
 
 }
