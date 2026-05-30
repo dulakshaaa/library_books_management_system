@@ -1,0 +1,47 @@
+.book-list {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.book-list h2 {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.book-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.book-list table th,
+.book-list table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.book-list table th {
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
+}
+
+.book-list table tr:hover {
+  background-color: #f5f5f5;
+}
+
+.book-list button {
+  background-color: #f44336;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.book-list button:hover {
+  background-color: #da190b;
+}
